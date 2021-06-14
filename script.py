@@ -193,7 +193,13 @@ class AutomateSheets:
         if req.status_code == 200:
             rng_sent = ""
             time = datetime.datetime.now()
-            time = str(time.hour) + ":" + str(time.minute)
+            hrs = str(time.hour)
+            mins = str(time.minute)
+            if len(hrs) == 1:
+                hrs = "0" + hrs
+            if len(mins) == 1:
+                mins = "0" + mins
+            time = hrs + ":" + mins
             if message_type == "reminder":
                 rng_sent = "Class Schedule" + f"!S{row+1}"
             else:
